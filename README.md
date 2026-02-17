@@ -20,7 +20,8 @@ Un sistema de grids animado de alto rendimiento para React y Astro. No es solo u
 Instala el paquete y sus dependencias peer:
 
 ```bash
-npm install canvas-grid-architect framer-motion
+npm install canvas-grid-ui framer-motion tailwindcss
+
 ```
 
 > **Nota**: Este paquete requiere Tailwind CSS instalado en tu proyecto para procesar las clases de diseño.
