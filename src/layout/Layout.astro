@@ -1,0 +1,103 @@
+---
+import "../styles/global.css";
+interface Props {
+  title?: string;
+}
+
+const { title = "Grid Architect Pro - Visual Grid Builder" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="dark:bg-black">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Diseña grids visualmente y exporta código Tailwind CSS listo para producción" />
+    <title>{title}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+
+  <body class="antialiased min-h-screen flex flex-col bg-white dark:bg-black text-zinc-900 dark:text-zinc-100 transition-colors duration-300">
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+      <div class="absolute inset-0 bg-white dark:bg-black"></div>
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] dark:opacity-20"></div>
+      <div class="absolute left-1/2 top-0 -translate-x-1/2 -z-10 h-[310px] w-[600px] rounded-full bg-blue-500/20 dark:bg-blue-600/10 blur-[120px]"></div>
+    </div>
+
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <footer class="border-t border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-black/50 backdrop-blur-md mt-20">
+      <div class="max-w-7xl mx-auto px-6 py-12">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-black dark:bg-white rounded-xl flex items-center justify-center transition-colors">
+              <svg class="w-6 h-6 text-white dark:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v7a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v7a1 1 0 01-1 1h-4a1 1 0 01-1-1V5z"></path>
+              </svg>
+            </div>
+            <span class="font-black uppercase tracking-tighter text-xl text-zinc-900 dark:text-white">Grid Architect Pro</span>
+          </div>
+          <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-widest">
+            Diseñado con ❤️ para desarrolladores
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --selection-bg: #3b82f6;
+    --sb-track: #f4f4f5;
+    --sb-thumb: #d4d4d8;
+  }
+
+  .dark {
+    --sb-track: #09090b;
+    --sb-thumb: #27272a;
+  }
+
+  code, pre, .font-mono { font-family: "JetBrains Mono", monospace; }
+
+  html { scroll-behavior: smooth; }
+
+  ::selection { background-color: var(--selection-bg); color: white; }
+
+  /* Custom scrollbar dinámico */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--sb-track); }
+  ::-webkit-scrollbar-thumb { background: var(--sb-thumb); border-radius: 5px; border: 2px solid var(--sb-track); }
+  ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+
+  /* Ajustes Dark Mode para Inputs */
+  .dark input[type="range"]::-webkit-slider-track {
+    background-color: #27272a;
+  }
+
+  input[type="range"] { -webkit-appearance: none; background: transparent; }
+  input[type="range"]::-webkit-slider-track { background-color: #e4e4e7; border-radius: 9999px; height: 0.5rem; }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #3b82f6;
+    border-radius: 9999px;
+    height: 1.25rem; width: 1.25rem;
+    margin-top: -0.375rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Glassmorphism Dark */
+  .glass {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+  }
+  .dark .glass {
+    background: rgba(9, 9, 11, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+</style>
